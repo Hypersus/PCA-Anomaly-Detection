@@ -87,7 +87,11 @@ class myPCA:
         return limit
     # 得到T2统计量后进行plot
     def plot_T2(self, T2 , maxT2 , conf,plt):
-        plt.plot(range(len(T2)), T2, 'o')
+        for i in range(len(T2)):
+            if T2[i]>=maxT2:
+                plt.plot(i, T2[i], 'ro')
+            else:
+                plt.plot(i, T2[i], 'bo')
         plt.axhline(y = maxT2, color='red')
         plt.xlabel('Samples')
         plt.ylabel('Hotellings T²')
@@ -96,7 +100,11 @@ class myPCA:
         return 0
     # 得到SPE统计量后进行plot
     def plot_SPE(self, SPE , SPE_limit , conf, plt):
-        plt.plot(range(len(SPE)), SPE, 'o')
+        for i in range(len(SPE)):
+            if SPE[i]>=SPE_limit:
+                plt.plot(i, SPE[i], 'ro')
+            else:
+                plt.plot(i, SPE[i], 'bo')
         plt.axhline(y = SPE_limit, color='red')
         plt.xlabel('Samples')
         plt.ylabel('Square Prediction Error')
